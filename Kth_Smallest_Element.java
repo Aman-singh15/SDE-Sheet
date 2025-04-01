@@ -13,19 +13,30 @@ Constraints:
 1 <= k <= n
 */
 
+import java.util.PriorityQueue;
+import java.util.Collections;
 class Solution {
     public static int kthSmallest(int[] arr, int k) {
         // Your code here
-        PriorityQueue<Integer>pq=new PriorityQueue<>();
-        for(int i=0;i<arr.length;i++){
-            pq.add(arr[i]);
+        PriorityQueue<Integer>pq=new PriorityQueue<>(collections.reverseOrder());
+        // for(int i=0;i<arr.length;i++){
+        //     pq.add(arr[i]);
+        // }
+        // int i=0;
+        // int ans=-1;
+        // while(i<k){
+        //     ans=pq.remove();
+        //     i++;
+        // }
+        // return ans;
+        
+        for(int nums : arr){
+             pq.add(nums);
+             if(pq.size()>k){
+                 pq.remove();
+             }
         }
-        int i=0;
-        int ans=-1;
-        while(i<k){
-            ans=pq.remove();
-            i++;
-        }
-        return ans;
+        return pq.remove();
     }
 }
+
